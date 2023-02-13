@@ -6,4 +6,5 @@
     <string name="submit_button">Submit</string>
     <string name="profile_pic">Profile Picture: </string>
     <string name="take_pic">Take a Picture</string>
+    <string name="loggedIn_Success">has successfully logged in!</string>
 </resources>

@@ -13,6 +13,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import java.util.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private var mFirstName: String? = null
@@ -27,6 +28,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private var mPictureButton: Button? = null
 
     private var mProfilePic: ImageView? = null
+
+    private var mLoggedinIntent: Intent? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -40,6 +43,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         mSubmitButton!!.setOnClickListener(this)
         mPictureButton!!.setOnClickListener(this)
+
+        mLoggedinIntent = Intent(this, LoginActivity::class.java)
     }
 
     override fun onClick(view: View) {
@@ -57,6 +62,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     //Complain that there's no text
                     Toast.makeText(this@MainActivity, "Enter a last name.", Toast.LENGTH_SHORT)
                         .show()
+                }
+                else{
+                    mLoggedinIntent!!.putExtra("FN_DATA", mFirstName)
+                    mLoggedinIntent!!.putExtra("LN_DATA", mLastName)
+                    startActivity(mLoggedinIntent)
                 }
             }
             R.id.picture_button -> {
