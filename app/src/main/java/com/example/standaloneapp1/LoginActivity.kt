@@ -19,5 +19,7 @@ class LoginActivity : AppCompatActivity() {
 
         mTvFirstName!!.text = recievedIntent.getStringExtra("FN_DATA") + " "
         mTvLastName!!.text = recievedIntent.getStringExtra("LN_DATA") + " "
+
+        requestedOrientation = android.content.pm.ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR
     }
 }
